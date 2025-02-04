@@ -72,18 +72,7 @@ For any questions or discussions, feel free to reach out! **If you are a Magshim
 
 ## License
 
-### **Copyright © [Your Name / Organization]**
-
 This project is licensed under the **Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)**.
-
-You are **not** allowed to:
-- Copy, modify, or distribute this work without explicit permission.
-- Use this work for commercial purposes.
-- Claim ownership or credit for this work.
-
-### **Permitted Usage**
-You may view the code and learn from it, but you **may not copy or submit it as your own work.**
-
 ### **Strictly Prohibited for Magshimim Students**
 Magshimim students are explicitly **forbidden** from copying, sharing, or using this code in their submissions. Violations may result in academic consequences.
 
