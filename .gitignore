@@ -1,0 +1,125 @@
+# ---- General ----
+.DS_Store
+Thumbs.db
+*.lock
+*.backup
+*.old
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+*.log
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+pip-wheel-metadata/
+pip-log.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Pytest cache
+.pytest_cache/
+.mypy_cache/
+__pypackages__/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.manifest
+*.spec
+
+# ---- C / C++ ----
+# Compiled object files
+*.o
+*.obj
+*.lo
+*.slo
+
+# Compiled libraries
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.hex
+
+# CMake and Makefile artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Debugging and profiling
+*.gcda
+*.gcno
+*.gcov
+*.profraw
+
+# CodeBlocks
+*.depend
+*.layout
+*.cbp
+*.workspace
+
+# Visual Studio
+*.sln
+*.vcxproj
+*.filters
+
+# ---- OpenCV ----
+opencv/
+opencv_build/
+opencv_contrib/
+opencv*.zip
+opencv*.tar.gz
+opencv*.whl
+cv2.pyd
+cv2.so
+cv2.dll
+cv2/
+
+# ---- Package Dependencies ----
+node_modules/
+bower_components/
+**/[Pp]ackages/
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# ---- IDE / Editor-Specific ----
+.vscode/
+.idea/
+*.sublime-workspace
+*.code-workspace
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ---- Testing & Coverage ----
+TestResult.xml
+nunit-*.xml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# ---- Version Control ----
+*.git/
+*.gitignore
+*.gitattributes
