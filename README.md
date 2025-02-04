@@ -87,5 +87,5 @@ You may view the code and learn from it, but you **may not copy or submit it as 
 ### **Strictly Prohibited for Magshimim Students**
 Magshimim students are explicitly **forbidden** from copying, sharing, or using this code in their submissions. Violations may result in academic consequences.
 
-For more details, see the full license at: [Creative Commons License](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+For more details, see the full license at: [License](LICENSE)
 
