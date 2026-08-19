@@ -1,80 +1,118 @@
-# Magshimim First Year - Final Project (C)
+# GifMaker
 
-## Introduction
+**C frame-sequence editor and playback project using linked data structures and OpenCV.**
 
-This repository contains my **final project** for the **Magshimim First Year** program, implemented in **C**. The project is a simple **GIF Maker**, allowing users to create and manage animated sequences by adding, removing, and modifying frames.
+GifMaker is an earlier systems/programming project from the Magshimim program. It manages an ordered sequence of image frames in C, supports editing and persistence of that sequence, and uses OpenCV for visual playback.
 
-## Project Structure
+The repository is kept as evidence of early work with **manual memory management, linked structures, file persistence, modular C code, and native multimedia integration**.
 
-The repository consists of:
-
-- **Source Code**: Implementation of the project logic in multiple C source files.
-- **Header Files**: Function and structure declarations for better modularity.
-- **Documentation**: Explanation of the approach, logic, and methodology used in the solution.
-- **Test Cases**: Sample input and output cases to validate correctness.
-
-## Technologies Used
-
-- **Programming Language**: C
-- **Development Environment**: Visual Studio Code / GCC / Clang / Any other IDE used
-- **Version Control**: Git
-- **Libraries**: OpenCV (for displaying frames)
+---
 
 ## Features
 
-- Add and remove frames from the GIF sequence.
-- Modify frame duration and order.
-- Save and load GIF projects.
-- Display animated sequences using OpenCV.
-
-## How to Run
-
-The execution of the program depends on whether it requires parameters or not:
-
-- **Compile the Project**:
-  ```sh
-  gcc -o gif_maker prog.c linkedList.c openAndEditProg.c view.c -lopencv_core -lopencv_highgui -lopencv_imgcodecs
-  ```
-
-- **Run the Program**:
-  ```sh
-  ./gif_maker
-  ```
-
-## Example Test Case
-
-### Input:
-```
-Add a new frame with path "image1.jpg" and duration 500ms
-Save project
-Play movie
-```
-
-### Output:
-```
-Frame added successfully!
-Project saved.
-Displaying animation...
-```
-
-## Future Improvements
-
-- Improve efficiency using advanced data structures.
-- Add more edge case testing.
-- Implement GUI or visualization for better user experience.
-
-## Contact
-
-For any questions or discussions, feel free to reach out! **If you are a Magshimim student, do not copy! Doing so is strictly prohibited and may result in disciplinary actions.**
+- Add frames to an animation sequence
+- Remove frames
+- Reorder frames
+- Change per-frame display duration
+- Save a project to disk
+- Load and continue editing an existing project
+- Render/play the frame sequence with OpenCV
+- Interactive command-line editing flow
 
 ---
-📌 **Note**: This project is part of my learning process in **Magshimim First Year** and represents my growth in programming and problem-solving.
+
+## Architecture
+
+```text
+            ┌───────────────────┐
+            │      prog.c       │
+            │ CLI / user flow   │
+            └─────────┬─────────┘
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+          ▼                       ▼
+┌──────────────────┐    ┌──────────────────────┐
+│ linkedList.c/.h  │    │ openAndEditProg.c/.h│
+│ frame ownership  │    │ save / load project  │
+│ ordering/editing │    │ persistence          │
+└────────┬─────────┘    └──────────┬───────────┘
+         │                         │
+         └────────────┬────────────┘
+                      ▼
+              ┌───────────────┐
+              │  view.c/.h    │
+              │ OpenCV render │
+              └───────────────┘
+```
+
+---
+
+## Repository Layout
+
+```text
+GifMaker/
+├── GifMaker/
+│   ├── prog.c
+│   ├── linkedList.c
+│   ├── linkedList.h
+│   ├── openAndEditProg.c
+│   ├── openAndEditProg.h
+│   ├── view.c
+│   ├── view.h
+│   ├── photos/
+│   ├── GifMaker.sln
+│   └── Project1.vcxproj
+├── LICENSE
+└── README.md
+```
+
+---
+
+## Engineering Concepts Demonstrated
+
+- C structs and pointers
+- Dynamic memory management
+- Linked-list ownership and mutation
+- Separation of data structure, persistence, rendering, and CLI responsibilities
+- File parsing and serialization
+- Native library integration
+- Visual Studio C project organization
+
+---
+
+## Build
+
+The repository includes a Visual Studio solution under `GifMaker/GifMaker.sln`.
+
+The original project depends on OpenCV. Build configuration may need to be adjusted to match the OpenCV installation available on the local machine.
+
+A generic GCC-style build has the following source shape:
+
+```bash
+gcc prog.c linkedList.c openAndEditProg.c view.c -o gif_maker <opencv-flags>
+```
+
+Run the command from the `GifMaker/` source directory and supply the OpenCV compiler/linker flags appropriate for the installed version.
+
+---
+
+## Project Status
+
+This is a completed historical learning project rather than an actively maintained multimedia application. It is intentionally preserved because it shows the progression from foundational C/data-structure work into later C++ systems, endpoint-security, backend, and AI engineering projects.
+
+---
+
+## Limitations
+
+- Depends on the OpenCV/toolchain configuration used by the original development environment
+- Command-line editing rather than a modern GUI
+- No automated test suite
+- Manual memory management requires careful ownership discipline
+- Not intended as a production GIF/video editing tool
+
+---
 
 ## License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)**.
-### **Strictly Prohibited for Magshimim Students**
-Magshimim students are explicitly **forbidden** from copying, sharing, or using this code in their submissions. Violations may result in academic consequences.
-
-For more details, see the full license at: [License](LICENSE)
-
+See [LICENSE](LICENSE).
