@@ -18,6 +18,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Reject developer-specific build paths
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          checked_suffixes = {".c", ".h", ".vcxproj", ".props", ".targets"}
+          forbidden = ("C:\\Users\\", "D:\\Users\\", "printTreeToFile.lib")
+          findings = []
+
+          for path in Path(".").rglob("*"):
+              if not path.is_file() or path.suffix.lower() not in checked_suffixes:
+                  continue
+              text = path.read_text(encoding="utf-8", errors="ignore")
+              for marker in forbidden:
+                  if marker in text:
+                      findings.append(f"{path}: contains {marker!r}")
+
+          if findings:
+              raise SystemExit("Developer-specific build configuration found:\n" + "\n".join(findings))
+          PY
+
       - name: Build core tests with warnings
         run: gcc -std=c11 -Wall -Wextra -Wpedantic -Werror -I GifMaker GifMaker/linkedList.c tests/test_linked_list.c -o linked-list-tests
 
