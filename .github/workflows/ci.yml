@@ -11,8 +11,12 @@ permissions:
 
 jobs:
   linked-list-core:
-    name: Core linked-list tests
+    name: Core linked-list tests (${{ matrix.mode }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [standard, sanitizers]
 
     steps:
       - name: Checkout
@@ -39,8 +43,16 @@ jobs:
               raise SystemExit("Developer-specific build configuration found:\n" + "\n".join(findings))
           PY
 
-      - name: Build core tests with warnings
-        run: gcc -std=c11 -Wall -Wextra -Wpedantic -Werror -I GifMaker GifMaker/linkedList.c tests/test_linked_list.c -o linked-list-tests
+      - name: Build core tests
+        run: |
+          flags="-std=c11 -Wall -Wextra -Wpedantic -Werror"
+          if [ "${{ matrix.mode }}" = "sanitizers" ]; then
+            flags="$flags -fsanitize=address,undefined -fno-omit-frame-pointer"
+          fi
+          gcc $flags -I GifMaker GifMaker/linkedList.c tests/test_linked_list.c -o linked-list-tests
 
       - name: Run core tests
+        env:
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
         run: ./linked-list-tests
