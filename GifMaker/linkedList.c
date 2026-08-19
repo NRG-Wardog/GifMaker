@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define ERRORE_FILE_NOT_FOUND "this frame does not exist.\n"
 #define ALL true
 
 /* Keep the core list implementation independent of OpenCV headers. */
